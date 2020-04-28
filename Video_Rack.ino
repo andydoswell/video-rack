@@ -39,7 +39,7 @@ void draw(void) { // Draws the display, and updates the arress lines for the swi
       digitalWrite (PC2, LOW);
       break;
     case 2:
-      u8g.drawStr( 55, 22, "DDT2");
+      u8g.drawStr( 55, 22, "DTT2");
       digitalWrite (PC0, LOW);
       digitalWrite (PC1, HIGH);
       digitalWrite (PC2, LOW);
@@ -126,11 +126,11 @@ void loop(void) {
 
   if (!digitalRead(11)) { // 405 select button increments selected channel
     Aselect++;
-    delay (100);
+    delay (150); // touch of delay in lieu of debounce.
   }
   if (!digitalRead(12)) { // 625 select button increments selected channel
     Iselect++;
-    delay (100);
+    delay (150);
   }
 
   // If anything is over-range, reset.
