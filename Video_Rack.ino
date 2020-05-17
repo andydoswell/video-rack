@@ -21,72 +21,72 @@ U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0 | U8G_I2C_OPT_NO_ACK | U8G_I2C_OPT_F
 unsigned int Aselect; // 405 line output select
 unsigned int Iselect; // 625 line output select
 
-void draw(void) { // Draws the display, and updates the arress lines for the switches.
+void draw(void) { // Draws the display, and updates the address lines for the switches.
   u8g.setFont(u8g_font_gdr17);
   u8g.drawStr( 0, 22, "405");
   u8g.drawStr(0, 64, "625");
   switch (Aselect) {
     case 0:
       u8g.drawStr( 55, 22, "DVD");
-      digitalWrite (PC0, LOW);
-      digitalWrite (PC1, LOW);
-      digitalWrite (PC2, LOW);
+      digitalWrite (14, LOW);
+      digitalWrite (15, LOW);
+      digitalWrite (16, LOW);
       break;
     case 1:
       u8g.drawStr( 55, 22, "DTT1");
-      digitalWrite (PC0, HIGH);
-      digitalWrite (PC1, LOW);
-      digitalWrite (PC2, LOW);
+      digitalWrite (14, HIGH);
+      digitalWrite (15, LOW);
+      digitalWrite (16, LOW);
       break;
     case 2:
       u8g.drawStr( 55, 22, "DTT2");
-      digitalWrite (PC0, LOW);
-      digitalWrite (PC1, HIGH);
-      digitalWrite (PC2, LOW);
+      digitalWrite (14, LOW);
+      digitalWrite (15, HIGH);
+      digitalWrite (16, LOW);
       break;
     case 3:
       u8g.drawStr( 55, 22, "Media");
-      digitalWrite (PC0, HIGH);
-      digitalWrite (PC1, HIGH);
-      digitalWrite (PC2, LOW);
+      digitalWrite (14, HIGH);
+      digitalWrite (15, HIGH);
+      digitalWrite (16, LOW);
       break;
     case 4:
       u8g.drawStr( 55, 22, "HDMI");
-      digitalWrite (PC0, LOW);
-      digitalWrite (PC1, LOW);
-      digitalWrite (PC2, HIGH);
+      digitalWrite (14, LOW);
+      digitalWrite (15, LOW);
+      digitalWrite (16, HIGH);
       break;
     case 5:
       u8g.drawStr( 55, 22, "Aux");
-      digitalWrite (PC0, HIGH);
-      digitalWrite (PC1, LOW);
-      digitalWrite (PC2, HIGH);
+      digitalWrite (14, HIGH);
+      digitalWrite (15, LOW);
+      digitalWrite (16, HIGH);
       break;
   }
   switch (Iselect) {
     case 0:
       u8g.drawStr( 55, 64, "DVD");
-      digitalWrite (PB0, LOW);
-      digitalWrite (PB1, LOW);
-      digitalWrite (PB2, LOW);
+      digitalWrite (8, LOW);
+      digitalWrite (9, LOW);
+      digitalWrite (10, LOW);
       break;
     case 1:
       u8g.drawStr( 55, 64, "Media");
-      digitalWrite (PB0, HIGH);
-      digitalWrite (PB1, HIGH);
-      digitalWrite (PB2, LOW);
+      digitalWrite (8, HIGH);
+      digitalWrite (9, HIGH);
+      digitalWrite (10, LOW);
       break;
     case 2:
       u8g.drawStr( 55, 64, "HDMI");
-      digitalWrite (PB0, LOW);
-      digitalWrite (PB1, LOW);
-      digitalWrite (PB2, HIGH);
+      digitalWrite (8, LOW);
+      digitalWrite (9, LOW);
+      digitalWrite (10, HIGH);
       break;
     case 3:
       u8g.drawStr( 55, 64, "Aux");
-      digitalWrite (PB0, HIGH);
-      digitalWrite (PB1, LOW);
-      digitalWrite (PB2, HIGH);
+      digitalWrite (8, HIGH);
+      digitalWrite (9, LOW);
+      digitalWrite (10, HIGH);
       break;
   }
 }
@@ -110,12 +110,12 @@ void setup(void) {
   analogWrite(3, 128);
   pinMode (11, INPUT_PULLUP); // 405 select switch here
   pinMode (12, INPUT_PULLUP); // 625 select switch here
-  pinMode (PC0, OUTPUT); // These are the address line outputs for 405.
-  pinMode (PC1, OUTPUT);
-  pinMode (PC2, OUTPUT);
-  pinMode (PB0, OUTPUT); // These are the address line outputs for 625.
-  pinMode (PB1, OUTPUT);
-  pinMode (PB2, OUTPUT);
+  pinMode (14, OUTPUT); // These are the address line outputs for 405.
+  pinMode (15, OUTPUT);
+  pinMode (16, OUTPUT);
+  pinMode (8, OUTPUT); // These are the address line outputs for 625.
+  pinMode (9, OUTPUT);
+  pinMode (10, OUTPUT);
 }
 
 void loop(void) {
